@@ -362,7 +362,7 @@ public class CameraActivity extends Fragment {
                         // If this happens, simply do not rotate the image and return it unmodified.
                         // If you do not catch the OutOfMemoryError, the Android app crashes.
                     }
-
+                    
                     // crop to match view
                     try {
                         ImageView pictureView = (ImageView) view.findViewById(getResources().getIdentifier("picture_view", "id", appResourcesPackage));
@@ -431,7 +431,7 @@ public class CameraActivity extends Fragment {
                     }
 
                     ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                    picture.compress(Bitmap.CompressFormat.JPEG, 85, byteArrayOutputStream);
+                    //picture.compress(Bitmap.CompressFormat.JPEG, 85, byteArrayOutputStream);
                     byte[] byteArray = byteArrayOutputStream.toByteArray();
 
                     String encodedImage = Base64.encodeToString(byteArray, Base64.NO_WRAP);
