@@ -363,6 +363,7 @@ public class CameraActivity extends Fragment {
                         // If you do not catch the OutOfMemoryError, the Android app crashes.
                     }
                     
+                    /*
                     // crop to match view
                     try {
                         ImageView pictureView = (ImageView) view.findViewById(getResources().getIdentifier("picture_view", "id", appResourcesPackage));
@@ -391,6 +392,8 @@ public class CameraActivity extends Fragment {
                         // If this happens, simply do not crop the image and return it unmodified.
                         // If you do not catch the OutOfMemoryError, the Android app crashes.
                     }
+                    */
+                    
                     /*
                     // scale to fit within bounds
                     if (maxWidth != 0 || maxHeight != 0) {
