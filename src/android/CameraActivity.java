@@ -337,7 +337,8 @@ public class CameraActivity extends Fragment {
                 public void onPictureTaken(byte[] data, Camera camera) {
                     Bitmap picture = BitmapFactory.decodeByteArray(data, 0, data.length);
                     Matrix matrix = new Matrix();
-
+                    
+                    /*
                     if (cameraCurrentlyLocked == Camera.CameraInfo.CAMERA_FACING_FRONT) {
                         Log.d(TAG, "mirror y axis");
                         matrix.preScale(-1.0f, 1.0f);
@@ -429,9 +430,10 @@ public class CameraActivity extends Fragment {
                             // If you do not catch the OutOfMemoryError, the Android app crashes.
                         }
                     }
-
+                    */
+                    
                     ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                    picture.compress(Bitmap.CompressFormat.JPEG, 85, byteArrayOutputStream);
+                    picture.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
                     byte[] byteArray = byteArrayOutputStream.toByteArray();
 
                     String encodedImage = Base64.encodeToString(byteArray, Base64.NO_WRAP);
