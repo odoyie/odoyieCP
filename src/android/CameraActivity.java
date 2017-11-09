@@ -391,7 +391,7 @@ public class CameraActivity extends Fragment {
                         // If this happens, simply do not crop the image and return it unmodified.
                         // If you do not catch the OutOfMemoryError, the Android app crashes.
                     }
-
+                    /*
                     // scale to fit within bounds
                     if (maxWidth != 0 || maxHeight != 0) {
                         try {
@@ -429,7 +429,7 @@ public class CameraActivity extends Fragment {
                             // If you do not catch the OutOfMemoryError, the Android app crashes.
                         }
                     }
-
+                    */
                     ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
                     //picture.compress(Bitmap.CompressFormat.JPEG, 85, byteArrayOutputStream);
                     byte[] byteArray = byteArrayOutputStream.toByteArray();
