@@ -446,7 +446,7 @@ public class CameraActivity extends Fragment {
                 }
             };
 
-            mCamera.takePicture(null, null, mPicture);
+            mCamera.takePicture(null, mPicture, null);
         } else {
             canTakePicture = true;
         }
