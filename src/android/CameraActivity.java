@@ -336,7 +336,7 @@ public class CameraActivity extends Fragment {
                 @Override
                 public void onPictureTaken(byte[] data, Camera camera) {
                     Bitmap picture = BitmapFactory.decodeByteArray(data, 0, data.length);
-                    
+                    /*
                     Matrix matrix = new Matrix();
 
                     if (cameraCurrentlyLocked == Camera.CameraInfo.CAMERA_FACING_FRONT) {
@@ -363,7 +363,7 @@ public class CameraActivity extends Fragment {
                         // If this happens, simply do not rotate the image and return it unmodified.
                         // If you do not catch the OutOfMemoryError, the Android app crashes.
                     }
-                    
+                    */
                     
                     /*
                     // crop to match view
@@ -436,7 +436,7 @@ public class CameraActivity extends Fragment {
                     }
                     */
                     ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                    //picture.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+                    picture.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
                     byte[] byteArray = byteArrayOutputStream.toByteArray();
 
                     String encodedImage = Base64.encodeToString(byteArray, Base64.NO_WRAP);
