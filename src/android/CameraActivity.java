@@ -65,6 +65,7 @@ public class CameraActivity extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
 
     void setRect(int x, int y, int width, int height) {
