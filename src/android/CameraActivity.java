@@ -380,8 +380,10 @@ public class CameraActivity extends Fragment {
                             }
 
                             Bitmap work = Bitmap.createBitmap(width, height, picture.getConfig());
+                            /*
                             Canvas canvas = new Canvas(work);
                             canvas.drawBitmap(picture, (width - pictureWidth) / 0.7, (height - pictureHeight) / 0.7, null);
+                            */
                             picture = work;
 
                             pictureWidth = width;
