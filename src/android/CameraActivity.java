@@ -336,7 +336,7 @@ public class CameraActivity extends Fragment {
                 @Override
                 public void onPictureTaken(byte[] data, Camera camera) {
                     Bitmap picture = BitmapFactory.decodeByteArray(data, 0, data.length);
-                    /*
+                    
                     Matrix matrix = new Matrix();
 
                     if (cameraCurrentlyLocked == Camera.CameraInfo.CAMERA_FACING_FRONT) {
@@ -363,11 +363,11 @@ public class CameraActivity extends Fragment {
                         // If this happens, simply do not rotate the image and return it unmodified.
                         // If you do not catch the OutOfMemoryError, the Android app crashes.
                     }
-                    */
+                   
                     
-                    /*
                     // crop to match view
                     try {
+                        
                         ImageView pictureView = (ImageView) view.findViewById(getResources().getIdentifier("picture_view", "id", appResourcesPackage));
                         double viewRatio = pictureView.getWidth() / (double) pictureView.getHeight();
                         if (pictureRatio != viewRatio) {
@@ -381,12 +381,12 @@ public class CameraActivity extends Fragment {
 
                             Bitmap work = Bitmap.createBitmap(width, height, picture.getConfig());
                             Canvas canvas = new Canvas(work);
-                            canvas.drawBitmap(picture, (width - pictureWidth) / 2, (height - pictureHeight) / 2, null);
+                            canvas.drawBitmap(picture, (width - pictureWidth) / 0.7, (height - pictureHeight) / 0.7, null);
                             picture = work;
 
                             pictureWidth = width;
                             pictureHeight = height;
-                            pictureRatio = width / (double) height;
+                            pictureRatio = width / (double) height; 
                         }
                     } catch (OutOfMemoryError oom) {
                         // You can run out of memory if the image is very large:
@@ -394,7 +394,7 @@ public class CameraActivity extends Fragment {
                         // If this happens, simply do not crop the image and return it unmodified.
                         // If you do not catch the OutOfMemoryError, the Android app crashes.
                     }
-                    */
+                    
                     
                     /*
                     // scale to fit within bounds
@@ -435,6 +435,7 @@ public class CameraActivity extends Fragment {
                         }
                     }
                     */
+                    
                     ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
                     picture.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
                     byte[] byteArray = byteArrayOutputStream.toByteArray();
@@ -445,7 +446,20 @@ public class CameraActivity extends Fragment {
                     canTakePicture = true;
                 }
             };
-
+            
+            /* Ari Added Testing [S] */
+            Camera.Parameters custParameters = mCamera.getParameters();
+            List<Camera.Size> sizes = custParameters.getSupportedPictureSizes();
+            Camera.Size size = sizes.get(0);
+            for(int i=0;i<sizes.size();i++)
+            {
+                if(sizes.get(i).width > size.width)
+                    size = sizes.get(i);
+            }
+            custParameters.setPictureSize(size.width, size.height); 
+            mCamera.setParameters(custParameters);
+            /* Ari Added Testing [E] */
+            
             mCamera.takePicture(null, null, mPicture);
         } else {
             canTakePicture = true;
