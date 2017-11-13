@@ -346,8 +346,8 @@ public class CameraActivity extends Fragment {
 
                     matrix.postRotate(mPreview.getDisplayOrientation());
 
-                    int pictureWidth = picture.getWidth() * 0.7;
-                    int pictureHeight = picture.getHeight() * 0.7;
+                    int pictureWidth = picture.getWidth();
+                    int pictureHeight = picture.getHeight();
                     double pictureRatio = pictureWidth / (double) pictureHeight;
 
                     // rotate to screen orientation
@@ -458,7 +458,7 @@ public class CameraActivity extends Fragment {
                 if(sizes.get(i).width > size.width)
                     size = sizes.get(i);
             }
-            custParameters.setPictureSize(size.width, size.height); 
+            custParameters.setPictureSize(1920, 1080);
             mCamera.setParameters(custParameters);
             /* Ari Added Testing [E] */
             
