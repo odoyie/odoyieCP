@@ -346,8 +346,8 @@ public class CameraActivity extends Fragment {
 
                     matrix.postRotate(mPreview.getDisplayOrientation());
 
-                    int pictureWidth = picture.getWidth();
-                    int pictureHeight = picture.getHeight();
+                    int pictureWidth = picture.getWidth() * 0.7;
+                    int pictureHeight = picture.getHeight() * 0.7;
                     double pictureRatio = pictureWidth / (double) pictureHeight;
 
                     // rotate to screen orientation
@@ -439,7 +439,7 @@ public class CameraActivity extends Fragment {
                     */
                     
                     ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                    picture.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+                    picture.compress(Bitmap.CompressFormat.JPEG, 85, byteArrayOutputStream);
                     byte[] byteArray = byteArrayOutputStream.toByteArray();
 
                     String encodedImage = Base64.encodeToString(byteArray, Base64.NO_WRAP);
