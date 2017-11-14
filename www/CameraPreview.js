@@ -57,7 +57,7 @@ CameraPreview.stopCamera = function(onSuccess, onError){
 
 CameraPreview.takePicture = function(dim, onSuccess, onError){
   dim = dim || {};
-  exec(onSuccess, onError, PLUGIN_NAME, "takePicture", [dim.maxWidth || 0, dim.maxHeight || 0]);
+  exec(onSuccess, onError, PLUGIN_NAME, "takePicture", [dim.maxWidth || 0, dim.maxHeight || 0, dim.imgQuality || 0]);
 };
 
 CameraPreview.setColorEffect = function(effect, onSuccess, onError){
