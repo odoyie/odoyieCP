@@ -326,7 +326,7 @@ public class CameraActivity extends Fragment {
         }
     }
 
-    void takePicture(final int maxWidth, final int maxHeight) {
+    void takePicture(final int maxWidth, final int maxHeight, final int imgQuality) {
         if (mPreview != null) {
             if (!canTakePicture)
                 return;
@@ -432,9 +432,12 @@ public class CameraActivity extends Fragment {
                         }
                     }
                     */
+                    if (imgQuality = 0) {
+                        imgQuality = 60;
+                    }
                     
                     ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                    picture.compress(Bitmap.CompressFormat.JPEG, 85, byteArrayOutputStream);
+                    picture.compress(Bitmap.CompressFormat.JPEG, imgQuality, byteArrayOutputStream);
                     byte[] byteArray = byteArrayOutputStream.toByteArray();
 
                     String encodedImage = Base64.encodeToString(byteArray, Base64.NO_WRAP);
