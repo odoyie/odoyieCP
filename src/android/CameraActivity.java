@@ -451,19 +451,14 @@ public class CameraActivity extends Fragment {
                 }
             };
 
-             /* Ari Added Testing [S] */
+            /* Ari Added Testing [S] */
             Camera.Parameters custParameters = mCamera.getParameters();
             List<Camera.Size> sizes = custParameters.getSupportedPictureSizes();
             Camera.Size size = sizes.get(0);
-            int maxSize = 0;
             for(int i=0;i<sizes.size();i++)
             {
-                int currSize = sizes.get(i).height * sizes.get(i).width;
-                //if(sizes.get(i).width > size.width)
-                //    size = sizes.get(i);
-                if (currSize > maxSize) { 
-                     size = sizes.get(i);
-                }
+                if(sizes.get(i).width > size.width)
+                    size = sizes.get(i);
             }
             custParameters.setPictureSize(size.width, size.height);
             mCamera.setParameters(custParameters);
