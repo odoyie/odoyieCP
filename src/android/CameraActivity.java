@@ -113,7 +113,7 @@ public class CameraActivity extends Fragment {
                             boolean isSingleTapTouch = gestureDetector.onTouchEvent(event);
                             if (event.getAction() != MotionEvent.ACTION_MOVE && isSingleTapTouch) {
                                 if (tapToTakePicture) {
-                                    takePicture(0, 0, 60);
+                                    takePicture(0, 0, 85);
                                 }
                                 return true;
                             } else {
@@ -434,7 +434,13 @@ public class CameraActivity extends Fragment {
                     */ 
                     
                     ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                    picture.compress(Bitmap.CompressFormat.JPEG, imgQuality, byteArrayOutputStream);
+                    if (imgQuality == 60) {
+                        picture.compress(Bitmap.CompressFormat.JPEG, 60, byteArrayOutputStream);
+                    } else if (imgQuality == 70) {
+                        picture.compress(Bitmap.CompressFormat.JPEG, 70, byteArrayOutputStream);
+                    } else {
+                        picture.compress(Bitmap.CompressFormat.JPEG, 85, byteArrayOutputStream);
+                    }
                     byte[] byteArray = byteArrayOutputStream.toByteArray();
 
                     String encodedImage = Base64.encodeToString(byteArray, Base64.NO_WRAP);
