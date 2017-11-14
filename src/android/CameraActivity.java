@@ -432,7 +432,7 @@ public class CameraActivity extends Fragment {
                         }
                     }
                     */
-                    if (imgQuality = 0) {
+                    if (imgQuality == 0) {
                         imgQuality = 60;
                     }
                     
