@@ -363,7 +363,7 @@ public class CameraActivity extends Fragment {
                         // If this happens, simply do not rotate the image and return it unmodified.
                         // If you do not catch the OutOfMemoryError, the Android app crashes.
                     }
-                    /*
+                    
                     // crop to match view
                     try {
                         ImageView pictureView = (ImageView) view.findViewById(getResources().getIdentifier("picture_view", "id", appResourcesPackage));
@@ -392,7 +392,7 @@ public class CameraActivity extends Fragment {
                         // If this happens, simply do not crop the image and return it unmodified.
                         // If you do not catch the OutOfMemoryError, the Android app crashes.
                     }
-                    crop end */
+                    
                     
                     // scale to fit within bounds
                     /*
@@ -455,10 +455,15 @@ public class CameraActivity extends Fragment {
             Camera.Parameters custParameters = mCamera.getParameters();
             List<Camera.Size> sizes = custParameters.getSupportedPictureSizes();
             Camera.Size size = sizes.get(0);
+            int maxSize = 0;
             for(int i=0;i<sizes.size();i++)
             {
-                if(sizes.get(i).width > size.width)
-                    size = sizes.get(i);
+                int currSize = sizes.get(i).height * sizes.get(i).width;
+                //if(sizes.get(i).width > size.width)
+                //    size = sizes.get(i);
+                if (currSize > maxSize) { 
+                     size = sizes.get(i);
+                }
             }
             custParameters.setPictureSize(size.width, size.height);
             mCamera.setParameters(custParameters);
