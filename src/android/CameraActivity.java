@@ -431,10 +431,7 @@ public class CameraActivity extends Fragment {
                             // If you do not catch the OutOfMemoryError, the Android app crashes.
                         }
                     }
-                    */
-                    if (imgQuality == 0) {
-                        imgQuality = 60;
-                    }
+                    */ 
                     
                     ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
                     picture.compress(Bitmap.CompressFormat.JPEG, imgQuality, byteArrayOutputStream);
