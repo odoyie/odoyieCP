@@ -3,8 +3,22 @@ package com.cordovaplugincamerapreview;
 import android.content.Context;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+
+import android.app.Fragment;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
 import android.hardware.Camera;
-import android.hardware.Camera.*;
+import android.hardware.Camera.Parameters;
+import android.hardware.Camera.PictureCallback;
+import android.os.Bundle;
+import android.util.Base64;
+import android.util.Log;
+import android.view.*;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 class CustomSurfaceView extends SurfaceView implements SurfaceHolder.Callback{
     private final String TAG = "CustomSurfaceView";
