@@ -461,8 +461,8 @@ public class CameraActivity extends Fragment {
                 if(sizes.get(i).width > size.width)
                     size = sizes.get(i);
             }
-            //custParameters.setPictureSize(size.width, size.height);
-            custParameters.setPictureSize(1080, 1920);             
+            custParameters.setPictureSize(size.width, size.height);
+            //custParameters.setPictureSize(1080, 1920);             
             mCamera.setParameters(custParameters);
             /* Ari Added Testing [E] */
             
