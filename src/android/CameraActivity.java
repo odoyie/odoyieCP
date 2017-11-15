@@ -263,7 +263,23 @@ public class CameraActivity extends Fragment {
         // Acquire the next camera and request Preview to reconfigure
         // parameters.
         mCamera = Camera.open((cameraCurrentlyLocked + 1) % numberOfCameras);
-
+        
+        /* Ari Added Testing [S] */ 
+        /*
+        List<Camera.Size> sizes = mCamera.getParameters().getSupportedPictureSizes();
+        Camera.Size size = sizes.get(0);
+        for(int i=0;i<sizes.size();i++)
+        {
+            if(sizes.get(i).width > size.width)
+                size = sizes.get(i);
+        }
+        custParameters.setPictureSize(size.width, size.height); 
+        */
+        cameraParameters = mCamera.getParameters();
+        cameraParameters.setPictureSize(1440, 1080); 
+        mCamera.setParameters(cameraParameters);
+        /* Ari Added Testing [E] */
+        
         if (cameraParameters != null) {
             mCamera.setParameters(cameraParameters);
         }
@@ -452,7 +468,7 @@ public class CameraActivity extends Fragment {
                 }
             };
 
-            /* Ari Added Testing [S] */
+            /* Ari Added Testing [S] 
             Camera.Parameters custParameters = mCamera.getParameters();
             List<Camera.Size> sizes = custParameters.getSupportedPictureSizes();
             Camera.Size size = sizes.get(0);
@@ -461,10 +477,10 @@ public class CameraActivity extends Fragment {
                 if(sizes.get(i).width > size.width)
                     size = sizes.get(i);
             }
-            /* custParameters.setPictureSize(size.width, size.height); */
+            //custParameters.setPictureSize(size.width, size.height); 
             custParameters.setPictureSize(1440, 1080);             
             mCamera.setParameters(custParameters);
-            /* Ari Added Testing [E] */
+            Ari Added Testing [E] */
             
             mCamera.takePicture(null, null, mPicture);
         } else {
