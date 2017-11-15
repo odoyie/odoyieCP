@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.hardware.Camera;
-import android.hardware.Camera.Parameters;
+import android.hardware.Camera.*;
 
 class CustomSurfaceView extends SurfaceView implements SurfaceHolder.Callback{
     private final String TAG = "CustomSurfaceView";
