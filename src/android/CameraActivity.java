@@ -190,7 +190,7 @@ public class CameraActivity extends Fragment {
         mCamera = Camera.open(defaultCameraId);
 
         if (cameraParameters != null) {
-			cameraParameters.setPictureSize(1440, 1080); 
+			//cameraParameters.setPictureSize(1440, 1080); 
             mCamera.setParameters(cameraParameters);
         }
 
@@ -275,10 +275,10 @@ public class CameraActivity extends Fragment {
                 size = sizes.get(i);
         }
         custParameters.setPictureSize(size.width, size.height); 
-        */
+        
         cameraParameters = mCamera.getParameters();
         cameraParameters.setPictureSize(1440, 1080); 
-        mCamera.setParameters(cameraParameters);
+        mCamera.setParameters(cameraParameters);*/
         /* Ari Added Testing [E] */
         
         if (cameraParameters != null) {
@@ -310,7 +310,7 @@ public class CameraActivity extends Fragment {
                 parameters.setFlashMode(Parameters.FLASH_MODE_ON);
             }
 			
-			parameters.setPictureSize(1440, 1080); 
+			//parameters.setPictureSize(1440, 1080); 
             mCamera.setParameters(parameters);
         }
 
@@ -329,7 +329,7 @@ public class CameraActivity extends Fragment {
             } else if (focusMode == FOCUS_CONTINUOUS && supportedFocusModes.contains(Parameters.FOCUS_MODE_CONTINUOUS_PICTURE)) {
                 parameters.setFocusMode(Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
             }
-			parameters.setPictureSize(1440, 1080);
+			//parameters.setPictureSize(1440, 1080);
             mCamera.setParameters(parameters);
         }
 
@@ -342,7 +342,7 @@ public class CameraActivity extends Fragment {
         cameraParameters = params;
 
         if (mCamera != null && cameraParameters != null) {
-			cameraParameters.setPictureSize(1440, 1080);
+			//cameraParameters.setPictureSize(1440, 1080);
             mCamera.setParameters(cameraParameters);
         }
     }
@@ -394,7 +394,7 @@ public class CameraActivity extends Fragment {
                                 height = pictureHeight;
                                 width = (int) Math.round(height * viewRatio);
                             } else {
-                                width = 720; //pictureWidth;
+                                width = pictureWidth;
                                 height = (int) Math.round(width / viewRatio);
                             }
 
@@ -473,7 +473,7 @@ public class CameraActivity extends Fragment {
 
             /* Ari Added Testing [S] */
             Camera.Parameters custParameters = mCamera.getParameters();
-            /*
+             
 			List<Camera.Size> sizes = custParameters.getSupportedPictureSizes();
             Camera.Size size = sizes.get(0);
             for(int i=0;i<sizes.size();i++)
@@ -481,9 +481,7 @@ public class CameraActivity extends Fragment {
                 if(sizes.get(i).width > size.width)
                     size = sizes.get(i);
             }
-            //custParameters.setPictureSize(size.width, size.height); 
-			*/
-            custParameters.setPictureSize(1440, 1080);             
+            custParameters.setPictureSize(size.width, size.height); 			            
             mCamera.setParameters(custParameters);
             /* Ari Added Testing [E] */
             
