@@ -31,10 +31,11 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
     int viewWidth;
     int viewHeight;
 
-    Preview(Context context) {
+    Preview(Context context, Camera camera) {
         super(context);
+		mCamera = camera;
 
-        mSurfaceView = new CustomSurfaceView(context);
+        mSurfaceView = new CustomSurfaceView(context, mCamera);
         addView(mSurfaceView);
 
         requestLayout();
@@ -107,10 +108,12 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
         if (mSupportedPreviewSizes != null) {
             mPreviewSize = getOptimalPreviewSize(mSupportedPreviewSizes, viewWidth, viewHeight);
         }
+
         try {
             camera.setPreviewDisplay(mHolder);
             Camera.Parameters parameters = camera.getParameters();
             parameters.setPreviewSize(mPreviewSize.width, mPreviewSize.height);
+			parameters.setPictureSize(1440, 1080);
             camera.setParameters(parameters);
         }
         catch (IOException exception) {
@@ -272,9 +275,12 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
 
         //YUV formats require conversion
         if (format == ImageFormat.NV21 || format == ImageFormat.YUY2 || format == ImageFormat.NV16) {
-            int w = parameters.getPreviewSize().width;
-            int h = parameters.getPreviewSize().height;
+            //int w = parameters.getPreviewSize().width;
+            //int h = parameters.getPreviewSize().height;
 
+			int w = parameters.getPictureSize().width;
+            int h = parameters.getPictureSize().height;
+			
             // Get the YuV image
             YuvImage yuvImage = new YuvImage(data, format, w, h, null);
             // Convert YuV to Jpeg
