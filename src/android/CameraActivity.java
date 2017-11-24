@@ -109,7 +109,7 @@ public class CameraActivity extends Fragment {
                         public boolean onTouch(View v, MotionEvent event) {
                             FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) frameContainerLayout.getLayoutParams();
 
-
+			    /*		
                             boolean isSingleTapTouch = gestureDetector.onTouchEvent(event);
                             if (event.getAction() != MotionEvent.ACTION_MOVE && isSingleTapTouch) {
                                 if (tapToTakePicture) {
@@ -156,8 +156,47 @@ public class CameraActivity extends Fragment {
                                             break;
                                     }
                                 }
-                            }
-                            return true;
+                            } */
+			    if (mCamera != null) {
+				    Camera camera = mCamera.getCamera();
+				    camera.cancelAutoFocus();
+				    Rect focusRect = calculateTapArea(event.getX(), event.getY(), 1f);
+
+				    Parameters parameters = camera.getParameters();
+				    //if (parameters.getFocusMode().equals(
+				    //	    Camera.Parameters.FOCUS_MODE_AUTO) {
+				    parameters.setFocusMode(Parameters.FOCUS_MODE_AUTO);
+				    //}
+
+				    if (parameters.getMaxNumFocusAreas() > 0) {
+					List<Area> mylist = new ArrayList<Area>();
+					mylist.add(new Camera.Area(focusRect, 1000));
+					parameters.setFocusAreas(mylist);
+				    }
+
+				    try {
+					camera.cancelAutoFocus();
+					camera.setParameters(parameters);
+					camera.startPreview();
+					camera.autoFocus(new Camera.AutoFocusCallback() {
+					    @Override
+					    public void onAutoFocus(boolean success, Camera camera) {
+						/*if (camera.getParameters().getFocusMode().equals(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE)) {
+						    Parameters parameters = camera.getParameters();
+						    parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
+						    if (parameters.getMaxNumFocusAreas() > 0) {
+							parameters.setFocusAreas(null);
+						    }
+						    camera.setParameters(parameters);
+						    camera.startPreview();
+						}*/
+					    }
+					});
+				    } catch (Exception e) {
+					e.printStackTrace();
+				    }
+				}
+                            	return true;
                         }
                     });
                 }
