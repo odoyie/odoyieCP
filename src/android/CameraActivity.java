@@ -20,6 +20,9 @@ import android.graphics.Rect;
 import java.io.ByteArrayOutputStream;
 import java.util.List;
 
+import java.util.List;
+import java.util.Arrays;
+
 public class CameraActivity extends Fragment {
     private static final int FLASH_OFF = 0;
     private static final int FLASH_ON = 1;
