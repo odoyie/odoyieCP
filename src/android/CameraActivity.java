@@ -165,12 +165,12 @@ public class CameraActivity extends Fragment {
 							
 				    Parameters parameters = mCamera.getParameters(); 
 				    parameters.setFocusMode(Parameters.FOCUS_MODE_AUTO); 
-
-				    if (parameters.getMaxNumFocusAreas() > 0) {
+				    parameters.setFocusAreas(Arrays.asList(new Camera.Area(focusRect, 1000)));	
+				    /*if (parameters.getMaxNumFocusAreas() > 0) {
 					List<Area> mylist = new ArrayList<Area>();
 					mylist.add(new Camera.Area(focusRect, 1000));
 					parameters.setFocusAreas(mylist);
-				    }
+				    }*/
 
 				    try {
 					mCamera.cancelAutoFocus();
