@@ -159,8 +159,9 @@ public class CameraActivity extends Fragment {
                             } */
 			    if (mCamera != null) {
 				    mCamera.cancelAutoFocus();
-				    Rect focusRect = calculateTapArea(event.getX(), event.getY(), 1f);
-
+				    Rect focusRect = calculateTapArea(event.getX(), event.getY(), 1f); 
+				    //calculateTapArea(event.getX(), event.getY(), 1f);
+							
 				    Parameters parameters = mCamera.getParameters(); 
 				    parameters.setFocusMode(Parameters.FOCUS_MODE_AUTO); 
 
@@ -192,6 +193,15 @@ public class CameraActivity extends Fragment {
         }
     }
 
+    private Rect calculateTapArea(float x, float y, float coefficient) {
+	    return new Rect(
+	      Math.round((x - 100) * 2000 / width  - 1000),
+	      Math.round((y - 100) * 2000 / height - 1000),
+	      Math.round((x + 100) * 2000 / width  - 1000),
+	      Math.round((y + 100) * 2000 / height - 1000)
+	    );
+    }
+	
     private void setDefaultCameraId() {
 
         // Find the total number of cameras available
