@@ -192,6 +192,8 @@ public class CameraActivity extends Fragment {
                             	return true;
                         }
                     });
+		    frameContainerLayout.setFocusableInTouchMode(true);
+                    frameContainerLayout.requestFocus();
                 }
             });
         }
